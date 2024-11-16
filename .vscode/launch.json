@@ -1,0 +1,22 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": ".NET Console App Debug",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            "program": "${workspaceFolder}/CourseManager.CLI.ConsoleApp/bin/Debug/net8.0/CourseManager.CLI.ConsoleApp.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/CourseManager.CLI.ConsoleApp",
+            "stopAtEntry": false,
+            "console": "integratedTerminal",
+            "env": {
+                "MSBuildSDKsPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101\\Sdks"
+            },
+            "justMyCode": false
+        }
+    ]
+}

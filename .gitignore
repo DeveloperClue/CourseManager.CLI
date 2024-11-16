@@ -1,0 +1,10 @@
+CourseManager.CLI.ConsoleApp/bin
+CourseManager.CLI.Core/bin
+CourseManager.CLI.Tests/bin
+CourseManager.CLI.Data/bin
+CourseManager.CLI.ConsoleApp/obj
+CourseManager.CLI.Core/obj
+CourseManager.CLI.Tests/obj
+CourseManager.CLI.Data/obj
+logs
+.vs
