@@ -1,6 +1,15 @@
 # CHANGELOG
 
 
+## [2024-Nov-20] **Implement Course repository and service layer**
+- Branch: `feature-course-repo-service`
+- Added `CourseRepository` for JSON-based data access
+- Created `ICourseService` interface and its implementation (`CourseService`)
+- Introduced `CourseManagerEventArgs` and `CourseManagerException` for domain-specific events and errors
+- Implemented generic `IRepository` support in `JsonFileRepository`
+- Registered ILogger using Serilog for logging
+- Configured dependency injection for `ICourseService`
+
 ## [2024-Nov-18] **Add Course model and repository interfaces**
 - Branch: `feature-course-model-repo`
 - Added `Course` domain model
