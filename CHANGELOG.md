@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## [2024-Nov-20] **Add Course commands (Add, Update, Delete, List, View)**
+- Branch: `feature-course-commands`
+- Implemented CRUD command handlers for `Course`
+- Structured command files under `ConsoleApp/Commands/Course/`
+- Introduced `CommandBase` and `ICommand` interface for command pattern
+- Added `NotImplementedCommand` as a default fallback
 
 ## [2024-Nov-20] **Implement Course repository and service layer**
 - Branch: `feature-course-repo-service`
