@@ -1,4 +1,6 @@
-﻿using CourseManager.CLI.Core.Infrastructure;
+﻿using CourseManager.CLI.ConsoleApp.Commands;
+using CourseManager.CLI.ConsoleApp.Menu;
+using CourseManager.CLI.Core.Infrastructure;
 using CourseManager.CLI.Core.Services;
 using CourseManager.CLI.Data.Repositories;
 using CourseManager.CLI.Data.Services;
@@ -35,6 +37,11 @@ namespace CourseManager.CLI.ConsoleApp
                 // Build the host with configured dependency injection container
                 // This creates all required services based on the configuration in CreateHostBuilder
                 using var host = CreateHostBuilder(args).Build();
+
+                // Start the application by launching the menu-driven interface
+                // The menu manager will handle all user interaction from this point forward
+                var menuManager = host.Services.GetRequiredService<IMenuManager>();
+                await menuManager.StartAsync();
             }
             catch (Exception ex)
             {
@@ -63,11 +70,34 @@ namespace CourseManager.CLI.ConsoleApp
             Host.CreateDefaultBuilder(args)
                 // Configure dependency injection services
                 .ConfigureServices((hostContext, services) =>
-                {                    
+                {
+
+                    // Determine data directory from config or default to a "Data" subdirectory
+                    // This is where all JSON repository files will be stored
+                    var dataDirectory = Path.Combine(Directory.GetCurrentDirectory(), "Data");
+
+                    // Ensure data directory exists to prevent file operation errors
+                    Directory.CreateDirectory(dataDirectory);
+
+                    // Register repository implementations with their file paths
+                    // Each repository is created with its own file path and typed logger
+
+                    // Course repository - reads/writes from "courses.json"
+                    services.AddSingleton<ICourseRepository>(provider =>
+                            new CourseRepository(dataDirectory, provider.GetRequiredService<ILogger<CourseRepository>>()));
+
                     // Register business logic services
                     // These services implement the application's core business rules
                     // and provide a layer of abstraction over the data repositories
                     services.AddSingleton<ICourseService, CourseService>();
+
+                    // Register the menu system that provides the user interface
+                    // The MenuManager is the main controller for user interaction
+                    services.AddSingleton<IMenuManager, MenuManager>();
+
+                    // Register the command factory for creating command objects
+                    // This factory creates the appropriate command handler for each menu selection
+                    services.AddSingleton<ICommandFactory, CommandFactory>();
                 })
                 // Configure Serilog as the logging provider
                 .UseSerilog();

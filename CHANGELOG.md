@@ -1,5 +1,12 @@
 # CHANGELOG
 
+
+## [2024-Nov-24] **Integrate Course menu**
+- Branch: `feature-course-menu`
+- Connected Course-related commands to `MenuManager` and `CommandFactory`
+- Enabled menu-driven navigation for `Course` operations
+- Introduced `ConsoleApp/Menu/MenuManager.cs` and `CommandFactory.cs` for seamless integration
+
 ## [2024-Nov-20] **Add Course commands (Add, Update, Delete, List, View)**
 - Branch: `feature-course-commands`
 - Implemented CRUD command handlers for `Course`
