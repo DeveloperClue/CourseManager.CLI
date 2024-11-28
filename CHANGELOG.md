@@ -1,6 +1,10 @@
 # CHANGELOG
 
 
+## [2024-Nov-26] **Add Course tests**
+- Branch: `test-course-module`
+- Added unit tests for `CourseService` and `CourseRepository` to ensure correctness and reliability.
+
 ## [2024-Nov-24] **Integrate Course menu**
 - Branch: `feature-course-menu`
 - Connected Course-related commands to `MenuManager` and `CommandFactory`
