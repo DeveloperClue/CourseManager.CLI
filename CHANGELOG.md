@@ -1,6 +1,13 @@
 # CHANGELOG
 
 
+#### `2024-12-01` – **Add Instructor model and repository interfaces**
+- Branch: `feature-instructor-model-repo`
+- Introduced Instructor domain model in `Core/Models/Instructor.cs` 
+- Declared `IInstructorRepository` abstraction in Core/Infrastructure  
+- Established groundwork for Instructor data access and domain logic separation
+
+
 ## [2024-Nov-26] **Add Course tests**
 - Branch: `test-course-module`
 - Added unit tests for `CourseService` and `CourseRepository` to ensure correctness and reliability.
