@@ -54,4 +54,38 @@ namespace CourseManager.CLI.Core.Events
             Action = action;
         }
     }
+
+    /// <summary>
+    /// Event arguments for when an instructor is added, updated or removed
+    /// </summary>
+    public class InstructorEventArgs : CourseManagerEventArgs
+    {
+        /// <summary>
+        /// Gets the unique identifier of the instructor
+        /// </summary>
+        public Guid InstructorId { get; }
+
+        /// <summary>
+        /// Gets the full name of the instructor
+        /// </summary>
+        public string InstructorName { get; }
+
+        /// <summary>
+        /// Gets the action performed on the instructor (e.g., "Added", "Updated", "Deleted")
+        /// </summary>
+        public string Action { get; }
+
+        /// <summary>
+        /// Initializes a new instance of the InstructorEventArgs class
+        /// </summary>
+        /// <param name="instructorId">The unique identifier of the instructor</param>
+        /// <param name="instructorName">The name of the instructor</param>
+        /// <param name="action">The action performed on the instructor</param>
+        public InstructorEventArgs(Guid instructorId, string instructorName, string action)
+        {
+            InstructorId = instructorId;
+            InstructorName = instructorName;
+            Action = action;
+        }
+    }
 }
