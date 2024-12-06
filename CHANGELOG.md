@@ -1,6 +1,13 @@
 # CHANGELOG
 
 
+## [2024-Dec-06] **Add Instructor commands (Add, Update, Delete, List, View, Assign, Remove Assignment)**
+- Branch: `feature-instructor-commands`
+- Added Instructor commands: `Add, Update, Delete, List, View`
+- Implemented `Assign` and `RemoveAssignment` command handlers
+- Commands placed under `ConsoleApp/Commands/Instructor/`
+- Enabled full CLI interaction with instructor data
+
 ## [2024-Dec-03] **Implement Instructor repository and service**
 - Branch: `feature-instructor-repo-service`
 - Defined `IInstructorService` interface for abstraction
