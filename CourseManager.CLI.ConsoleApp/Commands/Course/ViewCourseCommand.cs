@@ -10,12 +10,15 @@ namespace CourseManager.CLI.ConsoleApp.Commands
     public class ViewCourseCommand : CommandBase
     {
         private readonly ICourseService _courseService;
+        private readonly IInstructorService _instructorService;
 
         public ViewCourseCommand(
             ICourseService courseService,
+            IInstructorService instructorService,
             ILogger<ViewCourseCommand> logger) : base(logger)
         {
             _courseService = courseService ?? throw new ArgumentNullException(nameof(courseService));
+            _instructorService = instructorService ?? throw new ArgumentNullException(nameof(instructorService));
         }
 
         public override async Task ExecuteAsync()
@@ -47,6 +50,8 @@ namespace CourseManager.CLI.ConsoleApp.Commands
                 int selection = ReadInt("Enter course number to view details: ", 1, courses.Count());
                 var selectedCourse = courses.ElementAt(selection - 1);
 
+                // Get instructors assigned to this course
+                var instructors = await _instructorService.GetInstructorsByCourseAsync(selectedCourse.Id);
 
                 // Display course details
                 Console.Clear();
@@ -58,6 +63,20 @@ namespace CourseManager.CLI.ConsoleApp.Commands
                 Console.WriteLine($"Credits: {selectedCourse.Credits}");
                 Console.WriteLine($"Maximum Enrollment: {selectedCourse.MaxEnrollment}");
                 Console.WriteLine($"Created Date: {selectedCourse.CreatedDate.ToShortDateString()}");
+
+                // Display assigned instructors
+                Console.WriteLine("\nAssigned Instructors:");
+                if (instructors.Any())
+                {
+                    foreach (var instructor in instructors)
+                    {
+                        Console.WriteLine($"- {instructor.FirstName} {instructor.LastName} ({instructor.Email})");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("No instructors assigned to this course.");
+                }
             }
             catch (EntityNotFoundException ex)
             {

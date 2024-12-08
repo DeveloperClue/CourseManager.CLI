@@ -19,5 +19,10 @@ namespace CourseManager.CLI.ConsoleApp.Menu
         /// Displays the course management menu
         /// </summary>
         Task ShowCourseMenuAsync();
+
+        /// <summary>
+        /// Displays the instructor management menu
+        /// </summary>
+        Task ShowInstructorMenuAsync();
     }
 }

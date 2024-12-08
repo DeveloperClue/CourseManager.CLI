@@ -86,11 +86,16 @@ namespace CourseManager.CLI.ConsoleApp
                     services.AddSingleton<ICourseRepository>(provider =>
                             new CourseRepository(dataDirectory, provider.GetRequiredService<ILogger<CourseRepository>>()));
 
+                    // Instructor repository - reads/writes from "instructors.json"
+                    services.AddSingleton<IInstructorRepository>(provider =>
+                            new InstructorRepository(dataDirectory, provider.GetRequiredService<ILogger<InstructorRepository>>()));
+
                     // Register business logic services
                     // These services implement the application's core business rules
                     // and provide a layer of abstraction over the data repositories
                     services.AddSingleton<ICourseService, CourseService>();
-
+                    services.AddSingleton<IInstructorService, InstructorService>();
+                    
                     // Register the menu system that provides the user interface
                     // The MenuManager is the main controller for user interaction
                     services.AddSingleton<IMenuManager, MenuManager>();

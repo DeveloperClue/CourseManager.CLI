@@ -84,6 +84,7 @@ namespace CourseManager.CLI.ConsoleApp.Commands
 
                 "view-course" => new ViewCourseCommand(
                     GetService<ICourseService>(), 
+                    GetService<IInstructorService>(),
                     GetService<ILogger<ViewCourseCommand>>()),
 
                 "add-course" => new AddCourseCommand(GetService<ICourseService>(), GetService<ILogger<AddCourseCommand>>()),
@@ -95,6 +96,34 @@ namespace CourseManager.CLI.ConsoleApp.Commands
                     GetService<ILogger<DeleteCourseCommand>>()),
 
                 "find-courses-by-department" => new FindCoursesByDepartmentCommand(GetService<ICourseService>(), GetService<ILogger<FindCoursesByDepartmentCommand>>()),
+
+                // Instructor commands
+                "list-instructors" => new ListInstructorsCommand(GetService<IInstructorService >(), GetService<ILogger<ListInstructorsCommand>>()),
+
+                "view-instructor" => new ViewInstructorCommand(
+                    GetService<IInstructorService>(),
+                    GetService<ICourseService>(),
+                    GetService<ILogger<ViewInstructorCommand>>()),
+
+                "add-instructor" => new AddInstructorCommand(GetService<IInstructorService >(), GetService<ILogger<AddInstructorCommand>>()),
+
+                "update-instructor" => new UpdateInstructorCommand(GetService<IInstructorService >(), GetService<ILogger<UpdateInstructorCommand>>()),
+
+                "delete-instructor" => new DeleteInstructorCommand(
+                    GetService<IInstructorService>(),
+                    GetService<ILogger<DeleteInstructorCommand>>()),
+
+                "find-instructors-by-department" => new FindInstructorsByDepartmentCommand(GetService<IInstructorService >(), GetService<ILogger<FindInstructorsByDepartmentCommand>>()),
+
+                "assign-instructor" => new AssignInstructorCommand(
+                    GetService<IInstructorService>(),
+                    GetService<ICourseService>(),
+                    GetService<ILogger<AssignInstructorCommand>>()),
+
+                "remove-instructor-assignment" => new RemoveInstructorAssignmentCommand(
+                    GetService<IInstructorService>(),
+                    GetService<ICourseService>(),
+                    GetService<ILogger<RemoveInstructorAssignmentCommand>>()),
 
                 // Default/Unknown command
                 _ => new NotImplementedCommand(commandName, GetService<ILogger<NotImplementedCommand>>())

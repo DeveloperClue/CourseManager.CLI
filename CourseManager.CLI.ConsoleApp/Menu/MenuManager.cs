@@ -168,6 +168,112 @@ namespace CourseManager.CLI.ConsoleApp.Menu
         }
 
         /// <summary>
+        /// Displays the instructor management menu and processes the user's selection
+        /// </summary>
+        /// <returns>A task representing the asynchronous operation</returns>
+        public async Task ShowInstructorMenuAsync()
+        {
+            bool returnToMain = false;
+
+            while (!returnToMain)
+            {
+                Console.Clear();
+                Console.WriteLine("========================================");
+                Console.WriteLine("      INSTRUCTOR MANAGEMENT MENU        ");
+                Console.WriteLine("========================================");
+                Console.WriteLine("1. List All Instructors");
+                Console.WriteLine("2. View Instructor Details");
+                Console.WriteLine("3. Add New Instructor");
+                Console.WriteLine("4. Update Existing Instructor");
+                Console.WriteLine("5. Delete Instructor");
+                Console.WriteLine("6. Find Instructors by Department");
+                Console.WriteLine("7. Assign/Remove Instructor from Course");
+                Console.WriteLine("0. Return to Main Menu");
+                Console.WriteLine("========================================");
+
+                var choice = GetUserChoice("Enter your choice: ");
+
+                switch (choice)
+                {
+                    case 1:
+                        await _commandFactory.CreateCommand("list-instructors").ExecuteAsync();
+                        WaitForKeyPress();
+                        break;
+                    case 2:
+                        await _commandFactory.CreateCommand("view-instructor").ExecuteAsync();
+                        WaitForKeyPress();
+                        break;
+                    case 3:
+                        await _commandFactory.CreateCommand("add-instructor").ExecuteAsync();
+                        WaitForKeyPress();
+                        break;
+                    case 4:
+                        await _commandFactory.CreateCommand("update-instructor").ExecuteAsync();
+                        WaitForKeyPress();
+                        break;
+                    case 5:
+                        await _commandFactory.CreateCommand("delete-instructor").ExecuteAsync();
+                        WaitForKeyPress();
+                        break;
+                    case 6:
+                        await _commandFactory.CreateCommand("find-instructors-by-department").ExecuteAsync();
+                        WaitForKeyPress();
+                        break;
+                    case 7:
+                        await ShowInstructorAssignmentMenuAsync();
+                        break;
+                    case 0:
+                        returnToMain = true;
+                        break;
+                    default:
+                        DisplayInvalidChoiceMessage();
+                        break;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Displays the instructor assignment menu and processes the user's selection
+        /// </summary>
+        /// <returns>A task representing the asynchronous operation</returns>
+        private async Task ShowInstructorAssignmentMenuAsync()
+        {
+            bool returnToInstructorMenu = false;
+
+            while (!returnToInstructorMenu)
+            {
+                Console.Clear();
+                Console.WriteLine("========================================");
+                Console.WriteLine("    INSTRUCTOR ASSIGNMENT MENU          ");
+                Console.WriteLine("========================================");
+                Console.WriteLine("1. Assign Instructor to Course");
+                Console.WriteLine("2. Remove Instructor from Course");
+                Console.WriteLine("0. Return to Instructor Menu");
+                Console.WriteLine("========================================");
+
+                var choice = GetUserChoice("Enter your choice: ");
+
+                switch (choice)
+                {
+                    case 1:
+                        await _commandFactory.CreateCommand("assign-instructor").ExecuteAsync();
+                        WaitForKeyPress();
+                        break;
+                    case 2:
+                        await _commandFactory.CreateCommand("remove-instructor-assignment").ExecuteAsync();
+                        WaitForKeyPress();
+                        break;
+                    case 0:
+                        returnToInstructorMenu = true;
+                        break;
+                    default:
+                        DisplayInvalidChoiceMessage();
+                        break;
+                }
+            }
+        }
+
+        /// <summary>
         /// Executes the action corresponding to the user's main menu choice
         /// </summary>
         /// <param name="choice">The user's menu choice</param>
@@ -178,6 +284,12 @@ namespace CourseManager.CLI.ConsoleApp.Menu
             {
                 case 1:
                     await ShowCourseMenuAsync();
+                    break;
+                case 2:
+                    await ShowInstructorMenuAsync();
+                    break;
+                case 0:
+                    ExitApplication();
                     break;
                 default:
                     DisplayInvalidChoiceMessage();

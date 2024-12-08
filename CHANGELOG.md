@@ -1,6 +1,12 @@
 # CHANGELOG
 
 
+## [2024-Dec-08] **integrate instructor commands into CLI menu system**
+- Branch: `feature-instructor-menu`
+- Connected Instructor-related commands to `MenuManager` and `CommandFactory`
+- Enabled menu-driven navigation for `Instructor` operations
+- Improved command accessibility through menu integration
+
 ## [2024-Dec-06] **Add Instructor commands (Add, Update, Delete, List, View, Assign, Remove Assignment)**
 - Branch: `feature-instructor-commands`
 - Added Instructor commands: `Add, Update, Delete, List, View`
