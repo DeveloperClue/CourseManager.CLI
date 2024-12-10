@@ -1,6 +1,10 @@
 # CHANGELOG
 
 
+## [2024-Dec-10] **Add Instructor tests**
+- Branch: `test-instructor-module`
+- Added unit tests for `InstructorService` and `InstructorRepository` to ensure correctness and reliability.
+
 ## [2024-Dec-08] **integrate instructor commands into CLI menu system**
 - Branch: `feature-instructor-menu`
 - Connected Instructor-related commands to `MenuManager` and `CommandFactory`
