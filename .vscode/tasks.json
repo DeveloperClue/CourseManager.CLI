@@ -13,7 +13,7 @@
             ],
             "options": {
                 "env": {
-                    "MSBuildSDKsPath": "C:\\Program Files\\dotnet\\sdk\\8.0.115\\Sdks"
+                    "MSBuildSDKsPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101\\Sdks"
                 }
             },
             "problemMatcher": "$msCompile"

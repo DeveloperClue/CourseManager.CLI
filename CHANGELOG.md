@@ -1,6 +1,12 @@
 # CHANGELOG
 
 
+## [2024-Dec-13] **Add sample data and data initializer utility**
+- Branch: `feature-sample-data`
+- Added `DataInitializer` helper for loading demo/test records
+- Introduced sample data under `ConsoleApp/Data/`
+- Supports easier testing and CLI demonstration
+
 ## [2024-Dec-10] **Add Instructor tests**
 - Branch: `test-instructor-module`
 - Added unit tests for `InstructorService` and `InstructorRepository` to ensure correctness and reliability.
